@@ -26,6 +26,11 @@ public class RecipeContext : DbContext
             .HasForeignKey(s => s.RecipeId) // Explicitly define the foreign key
             .WillCascadeOnDelete(true); // Cascade delete when a Recipe is deleted
 
+        modelBuilder.Entity<Ingredient>()
+        .HasOptional(i => i.PlantAlternative)  // Optional relationship to another Ingredient
+        .WithMany()  // No navigation property on the other side
+        .HasForeignKey(i => i.PlantAlternativeId)  // Foreign key is PlantAlternativeId
+        .WillCascadeOnDelete(false);  // Disable cascade delete for this self-referencing relationship
         Console.WriteLine("Creating Model");
 
         base.OnModelCreating(modelBuilder);

@@ -1,6 +1,4 @@
-﻿
-
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
 public class DbInteractor
 {
@@ -22,6 +20,11 @@ public class DbInteractor
         Recipe recipe = _context.Recipes.Find(id);
         recipe.Ingredients = GetIngredientsForRecipe(id);
         recipe.Steps = GetStepsForRecipe(id);
+        foreach (Ingredient ingredient in recipe.Ingredients)
+        {
+            if(ingredient.PlantAlternativeId != null)
+                ingredient.PlantAlternative = GetAlternative((int)ingredient.PlantAlternativeId);
+        }
         return recipe;
     }
 
@@ -32,6 +35,11 @@ public class DbInteractor
         {
             recipe.Ingredients = GetIngredientsForRecipe(recipe.RecipeId);
             recipe.Steps = GetStepsForRecipe(recipe.RecipeId);
+            foreach (Ingredient ingredient in recipe.Ingredients)
+            {
+                if(ingredient.PlantAlternativeId != null)
+                    ingredient.PlantAlternative = GetAlternative((int)ingredient.PlantAlternativeId);
+            }
         }
         return recipes.ToList();
     }
@@ -56,7 +64,12 @@ public class DbInteractor
         return _context.Ingredients.Where(i => i.RecipeId == recipeId).ToList();
     }
 
-    #endregion
+    public Ingredient GetAlternative(int AlternativeId)
+    {
+        return _context.Ingredients.Find(AlternativeId);
+    }
+
+    #endregion Ingredients
 
     #region Steps
 
@@ -65,5 +78,5 @@ public class DbInteractor
         return _context.Steps.Where(s => s.RecipeId == recipeId).ToList();
     }
 
-    #endregion
+    #endregion Steps
 }

@@ -4,6 +4,7 @@ public class RecipeContext : DbContext
 {
     public RecipeContext() : base("name=RecipeDb")
     {
+        this.Configuration.LazyLoadingEnabled = true;
     }
 
     public DbSet<Recipe> Recipes { get; set; }
@@ -15,17 +16,19 @@ public class RecipeContext : DbContext
     {
         modelBuilder.Entity<Recipe>()
             .HasMany(r => r.Ingredients)
-            .WithRequired()
-            .WillCascadeOnDelete(true);
+            .WithRequired(i => i.Recipe) // Specify the navigation property for Ingredients
+            .HasForeignKey(i => i.RecipeId) // Explicitly define the foreign key
+            .WillCascadeOnDelete(true); // Cascade delete when a Recipe is deleted
 
         modelBuilder.Entity<Recipe>()
             .HasMany(r => r.Steps)
-            .WithRequired()
-            .WillCascadeOnDelete(true);
+            .WithRequired(s => s.Recipe) // Specify the navigation property for Steps
+            .HasForeignKey(s => s.RecipeId) // Explicitly define the foreign key
+            .WillCascadeOnDelete(true); // Cascade delete when a Recipe is deleted
 
         Console.WriteLine("Creating Model");
 
         base.OnModelCreating(modelBuilder);
     }
-    
+
 }

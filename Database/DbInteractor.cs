@@ -19,12 +19,21 @@ public class DbInteractor
 
     public Recipe GetRecipe(int id)
     {
-        return _context.Recipes.Find(id);
+        Recipe recipe = _context.Recipes.Find(id);
+        recipe.Ingredients = GetIngredientsForRecipe(id);
+        recipe.Steps = GetStepsForRecipe(id);
+        return recipe;
     }
 
     public List<Recipe> GetAllRecipes()
     {
-        return _context.Recipes.ToList();
+        Recipe[] recipes = _context.Recipes.ToArray();
+        foreach (Recipe recipe in recipes)
+        {
+            recipe.Ingredients = GetIngredientsForRecipe(recipe.RecipeId);
+            recipe.Steps = GetStepsForRecipe(recipe.RecipeId);
+        }
+        return recipes.ToList();
     }
 
     public void UpdateRecipe(Recipe recipe)
@@ -39,4 +48,22 @@ public class DbInteractor
         _context.Recipes.Remove(recipe);
         _context.SaveChanges();
     }
+
+    #region Ingredients
+
+    public List<Ingredient> GetIngredientsForRecipe(int recipeId)
+    {
+        return _context.Ingredients.Where(i => i.RecipeId == recipeId).ToList();
+    }
+
+    #endregion
+
+    #region Steps
+
+    public List<Step> GetStepsForRecipe(int recipeId)
+    {
+        return _context.Steps.Where(s => s.RecipeId == recipeId).ToList();
+    }
+
+    #endregion
 }

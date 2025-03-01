@@ -32,6 +32,7 @@
             RecipeTitleLbl = new Label();
             RecipeStepBox = new CheckedListBox();
             AddRecipeBtn = new Button();
+            TotalDbInstancesLbl = new Label();
             SuspendLayout();
             // 
             // RandomRecipeButton
@@ -71,11 +72,21 @@
             AddRecipeBtn.UseVisualStyleBackColor = true;
             AddRecipeBtn.Click += AddRecipeBtn_Click;
             // 
+            // TotalDbInstancesLbl
+            // 
+            TotalDbInstancesLbl.AutoSize = true;
+            TotalDbInstancesLbl.Location = new Point(594, 9);
+            TotalDbInstancesLbl.Name = "TotalDbInstancesLbl";
+            TotalDbInstancesLbl.Size = new Size(38, 15);
+            TotalDbInstancesLbl.TabIndex = 4;
+            TotalDbInstancesLbl.Text = "label1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(TotalDbInstancesLbl);
             Controls.Add(AddRecipeBtn);
             Controls.Add(RecipeStepBox);
             Controls.Add(RecipeTitleLbl);
@@ -92,5 +103,6 @@
         private Label RecipeTitleLbl;
         private CheckedListBox RecipeStepBox;
         private Button AddRecipeBtn;
+        private Label TotalDbInstancesLbl;
     }
 }

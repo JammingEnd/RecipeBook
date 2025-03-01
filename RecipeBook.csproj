@@ -12,6 +12,11 @@
     <PackageReference Include="EntityFramework" Version="6.5.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Database\Queries\" />
+    <Folder Include="RecipeCreatorModules\" />
+  </ItemGroup>
+
 	
 	
 </Project>

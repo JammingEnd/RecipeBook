@@ -4,6 +4,7 @@ public class RecipeContext : DbContext
 {
     public RecipeContext() : base("name=RecipeDb")
     {
+        
         this.Configuration.LazyLoadingEnabled = true;
     }
 

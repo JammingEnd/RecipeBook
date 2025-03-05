@@ -7,13 +7,13 @@ namespace RecipeBook.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class RemoveAmountFromFramework_ForReal : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RemoveAmountFromFramework_ForReal));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "202503012018265_RemoveAmountFromFramework_ForReal"; }
+            get { return "202503041321584_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

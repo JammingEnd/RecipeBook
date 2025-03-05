@@ -7,13 +7,13 @@ namespace RecipeBook.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class DisableCascadeDeleteForPlantAlternative : IMigrationMetadata
+    public sealed partial class IniDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DisableCascadeDeleteForPlantAlternative));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(IniDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202503012002319_DisableCascadeDeleteForPlantAlternative"; }
+            get { return "202503041325026_IniDb"; }
         }
         
         string IMigrationMetadata.Source

@@ -281,7 +281,7 @@ namespace RecipeBook
             {
                 totalKcal += ingredient.Calories;
             }
-            totalKcal = totalKcal * recipe.PrepareAmount;
+            //totalKcal = totalKcal * recipe.PrepareAmount;
             return totalKcal;
         }
     }

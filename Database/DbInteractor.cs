@@ -23,7 +23,16 @@ public class DbInteractor
         foreach (Ingredient ingredient in recipe.Ingredients)
         {
             if(ingredient.PlantAlternativeId != null)
+            {
                 ingredient.PlantAlternative = GetAlternative((int)ingredient.PlantAlternativeId);
+                
+            }
+
+        }
+        Ingredient[] plantAlts = recipe.Ingredients.Where(x => x.PlantAlternative != null).ToArray();
+        foreach(var item in plantAlts)
+        {
+            recipe.Ingredients.Remove(item.PlantAlternative);
         }
         return recipe;
     }

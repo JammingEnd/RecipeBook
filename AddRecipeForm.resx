@@ -117,4 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label3.Text" xml:space="preserve">
+    <value>To add a step, being with ' -&gt; '
+To add a tip, begin with ' !&gt; '
+To add an ingredient, being with ' !- '  after this the next text is the name, end the name with ' ; ' number after this is the amount
+ and end with ' ; ' the text after this is the measurement unit, end with ' ; ' the next number is calories
+To add a plant alternative start with ' &gt;&gt; ' and follow the same steps as the ingredient
+
+
+
+
+</value>
+  </data>
 </root>

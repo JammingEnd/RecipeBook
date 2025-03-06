@@ -64,7 +64,7 @@
             AddRecipeBtn.Name = "AddRecipeBtn";
             AddRecipeBtn.Size = new Size(188, 23);
             AddRecipeBtn.TabIndex = 3;
-            AddRecipeBtn.Text = "Add Recipe (hardcoded)";
+            AddRecipeBtn.Text = "Back";
             AddRecipeBtn.UseVisualStyleBackColor = true;
             AddRecipeBtn.Click += AddRecipeBtn_Click;
             // 

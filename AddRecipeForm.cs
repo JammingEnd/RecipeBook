@@ -211,7 +211,7 @@ namespace RecipeBook
             _newrecipe.Ingredients = _ingredients;
             _newrecipe.Steps = _steps;
             AddToDatabase();
-
+            closeWindow();
         }
 
         private void AddToDatabase()
@@ -229,6 +229,11 @@ namespace RecipeBook
         }
 
         private void BackBtn_Click(object sender, EventArgs e)
+        {
+            closeWindow();
+        }
+
+        void closeWindow()
         {
             startupscreen scr = new startupscreen();
             scr.Show();

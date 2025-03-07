@@ -17,6 +17,15 @@
     <Folder Include="Database\Queries\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Database\ThuisOpdrachtenDb.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Database\ThuisOpdrachtenDb_log.ldf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 	
 	
 </Project>

@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class IniDb : DbMigration
     {
         public override void Up()
         {
@@ -14,12 +14,16 @@
                         IngredientId = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Quantity = c.Single(nullable: false),
+                        Calories = c.Int(nullable: false),
                         Unit = c.String(),
-                        Recipe_RecipeId = c.Int(nullable: false),
+                        RecipeId = c.Int(nullable: false),
+                        PlantAlternativeId = c.Int(),
                     })
                 .PrimaryKey(t => t.IngredientId)
-                .ForeignKey("dbo.Recipes", t => t.Recipe_RecipeId, cascadeDelete: true)
-                .Index(t => t.Recipe_RecipeId);
+                .ForeignKey("dbo.Ingredients", t => t.PlantAlternativeId)
+                .ForeignKey("dbo.Recipes", t => t.RecipeId, cascadeDelete: true)
+                .Index(t => t.RecipeId)
+                .Index(t => t.PlantAlternativeId);
             
             CreateTable(
                 "dbo.Recipes",
@@ -37,20 +41,23 @@
                     {
                         StepId = c.Int(nullable: false, identity: true),
                         Description = c.String(),
-                        Recipe_RecipeId = c.Int(nullable: false),
+                        Tip = c.String(),
+                        RecipeId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.StepId)
-                .ForeignKey("dbo.Recipes", t => t.Recipe_RecipeId, cascadeDelete: true)
-                .Index(t => t.Recipe_RecipeId);
+                .ForeignKey("dbo.Recipes", t => t.RecipeId, cascadeDelete: true)
+                .Index(t => t.RecipeId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Steps", "Recipe_RecipeId", "dbo.Recipes");
-            DropForeignKey("dbo.Ingredients", "Recipe_RecipeId", "dbo.Recipes");
-            DropIndex("dbo.Steps", new[] { "Recipe_RecipeId" });
-            DropIndex("dbo.Ingredients", new[] { "Recipe_RecipeId" });
+            DropForeignKey("dbo.Steps", "RecipeId", "dbo.Recipes");
+            DropForeignKey("dbo.Ingredients", "RecipeId", "dbo.Recipes");
+            DropForeignKey("dbo.Ingredients", "PlantAlternativeId", "dbo.Ingredients");
+            DropIndex("dbo.Steps", new[] { "RecipeId" });
+            DropIndex("dbo.Ingredients", new[] { "PlantAlternativeId" });
+            DropIndex("dbo.Ingredients", new[] { "RecipeId" });
             DropTable("dbo.Steps");
             DropTable("dbo.Recipes");
             DropTable("dbo.Ingredients");

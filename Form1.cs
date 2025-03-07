@@ -286,5 +286,19 @@ namespace RecipeBook
 
         #region adding recipe
         #endregion adding recipe
+
+        private void PdfBtn_Click(object sender, EventArgs e)
+        {
+            PdfCreator pdfCreator = new PdfCreator();
+
+            pdfCreator.AddLine(_currentRecipe.Name);
+
+            foreach (string item in RecipeStepBox.Items)
+            {
+                pdfCreator.AddLine(item);
+            }
+
+            pdfCreator.SavePdf(_currentRecipe.Name);
+        }
     }
 }

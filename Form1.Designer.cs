@@ -36,6 +36,7 @@
             AmountInput = new NumericUpDown();
             comboBox1 = new ComboBox();
             VeganOption = new CheckBox();
+            PdfBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)AmountInput).BeginInit();
             SuspendLayout();
             // 
@@ -114,11 +115,22 @@
             VeganOption.UseVisualStyleBackColor = true;
             VeganOption.CheckedChanged += VeganOption_CheckedChanged;
             // 
+            // PdfBtn
+            // 
+            PdfBtn.Location = new Point(600, 415);
+            PdfBtn.Name = "PdfBtn";
+            PdfBtn.Size = new Size(188, 23);
+            PdfBtn.TabIndex = 9;
+            PdfBtn.Text = "Print Pdf";
+            PdfBtn.UseVisualStyleBackColor = true;
+            PdfBtn.Click += PdfBtn_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(PdfBtn);
             Controls.Add(VeganOption);
             Controls.Add(comboBox1);
             Controls.Add(AmountInput);
@@ -144,5 +156,6 @@
         private NumericUpDown AmountInput;
         private ComboBox comboBox1;
         private CheckBox VeganOption;
+        private Button PdfBtn;
     }
 }
